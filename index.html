@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lord Samskid Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #0b0f1a;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+  color: #00f5d4;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  background: linear-gradient(90deg, #00f5d4, #4cc9f0);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 40px;
+}
+
+.card {
+  background: linear-gradient(145deg, #111827, #1f2937);
+  border-radius: 20px;
+  padding: 20px;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.platform {
+  font-size: 14px;
+  color: #00f5d4;
+}
+
+.price {
+  font-size: 22px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00f5d4, #4cc9f0);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">⚡ Lord Samskid Store</div>
+</header>
+
+<section class="hero">
+  <h1>Explode Your Social Growth 🚀</h1>
+  <p>Fast • Secure • Trusted</p>
+</section>
+
+<div class="container">
+
+  <div class="card">
+    <div class="platform">Instagram</div>
+    <h2>5K Followers</h2>
+    <div class="price">₦15,000</div>
+    <button onclick="payWithPaystack(15000)">Pay Now</button>
+    <a href="https://wa.me/2348083493802?text=I want Instagram 5K Followers">
+      <button>Chat on WhatsApp</button>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="platform">TikTok</div>
+    <h2>10K Followers</h2>
+    <div class="price">₦12,000</div>
+    <button onclick="payWithPaystack(12000)">Pay Now</button>
+    <a href="https://wa.me/2348083493802?text=I want TikTok 10K Followers">
+      <button>Chat on WhatsApp</button>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="platform">Facebook</div>
+    <h2>8K Page Likes</h2>
+    <div class="price">₦10,000</div>
+    <button onclick="payWithPaystack(10000)">Pay Now</button>
+    <a href="https://wa.me/2348083493802?text=I want Facebook Boost">
+      <button>Chat on WhatsApp</button>
+    </a>
+  </div>
+
+</div>
+
+<footer>© 2026 Lord Samskid Store</footer>
+
+<script>
+function payWithPaystack(amount) {
+  var handler = PaystackPop.setup({
+    key: 'pk_live_58ae5cfcaa38d28d7aab7f88e016670b8f5fa9a9',
+    email: 'customer@email.com',
+    amount: amount * 100,
+    currency: 'NGN',
+    callback: function(response){
+      alert('Payment successful! Reference: ' + response.reference);
+    },
+    onClose: function(){
+      alert('Transaction cancelled');
+    }
+  });
+  handler.openIframe();
+}
+</script>
+
+</body>
+</html>
